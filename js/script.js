@@ -62,18 +62,36 @@ form.addEventListener('submit', function(evento){
     }) 
 
     //divmae
+    // divmae.addEventListener("dragstart", function (ev) { 
+    //     dragging = ev.target.closest(primeiraDiv)//tarefas
+    // })
+    
+    // divmae.addEventListener("dragover", function (ev) {
+    //     ev.preventDefault();
+    //     const node = ev.target.closest(primeiraDiv) 
+    //     this.parentNode.insertBefore('dragging', node)
+    // })
+
+    // divmae.addEventListener("dragend", function (ev) { 
+    //     ev.preventDefault();
+    //     const node2 = ev.target.closest(primeiraDiv) 
+    //     this.parentNode.insertBefore('dragging', node2)
+    //     dragging = null     
+    // })
     primeiraDiv.addEventListener("dragstart", function (ev) { 
-        dragging = ev.target.closest(divmae)//tarefas
+        dragging = ev.target.closest(".divTarefas")//tarefas
+
     })
     
     primeiraDiv.addEventListener("dragover", function (ev) {
         ev.preventDefault();
-        const node = ev.target.closest(divmae) 
-        this.parentNode.insertBefore(dragging, node)
+		const node = ev.target.closest(".divTarefas") 
+        this.insertBefore(dragging, node)
+
     })
 
     primeiraDiv.addEventListener("dragend", function (ev) { 
         dragging = null     
+
     })
- 
 });
