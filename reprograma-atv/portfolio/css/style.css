@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box ;
+    
+}
+
+body {
+    background-image: url("file:///C:/Users/Cliente/Desktop/reprograma-atv/portfolio/img/guitarphoto.jpg");
+   
+}
+
+h1 h2{
+  height: 25%;
+  width: 25;
+  margin-left: 50%;
+}
+
+
+.sobre {
+     background-position: center;
+     border-radius: 27px;
+}
+
+.sobre-imagem{
+     width: 50%;
+     height: 50%;
+     
+}
+
+.sobre-conteudo {
+      background-color: cornsilk;
+      color: #0000ff;
+      width: 50%;
+      height: 45%;
+      align-content: center;
+      margin-left: 25%;
+}
+
+.sobre__sobre {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: pink;
+}
+
+.sobre-botao {
+    display: block;
+}
+
+.sobre-botao__instagram {
+    width: 50%;
+    height: 50%;
+}
+
+.sobre-botao__twitter {
+    width: 50%;
+    height: 50%;
+}
+
+.sobre-botao__site {
+    width: 50%;
+    height: 50%;
+}
+
+padding {
+    width: 50%;
+    color: burlywood;
+
+}
