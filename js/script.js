@@ -14,10 +14,14 @@ form.addEventListener('submit', function(evento){
     let divmae = document.createElement("div");
     let tarefas = document.createElement("p");
     let excluir = document.createElement("span");
+    let editar = document.createElement("span");
 
     divmae.className = "divTarefas";
     tarefas.innerHTML=caixaTexto.value;
     excluir.innerHTML="x";
+    tarefas.innerHTML=caixaTexto.value;
+    editar.innerHTML="Edit";
+    editar.classList.add("editar");
     document.getElementById("campo").value = "";
     divmae.setAttribute('draggable', true);
     tarefas.setAttribute('draggable', true);
@@ -27,6 +31,7 @@ form.addEventListener('submit', function(evento){
     
     divmae.appendChild(tarefas);
     divmae.appendChild(excluir);
+    divmae.appendChild(editar);
     primeiraDiv.appendChild(divmae);
 
     tarefas.addEventListener("dblclick", function(){
@@ -42,6 +47,43 @@ form.addEventListener('submit', function(evento){
     excluir.addEventListener("click", function(){
         divmae.parentNode.removeChild(divmae);   
     })
+
+
+
+
+    editar.addEventListener("click",function(){
+        if (!editar.classList.contains("vermelho")){ 
+            // Permitir edicion
+            editar.classList.add("vermelho");
+            tarefas.setAttribute("contentEditable", true);
+        } else {
+            // Dejar como estava
+            editar.classList.remove("vermelho");
+            tarefas.setAttribute("contentEditable", false);
+
+        }
+    })
+
+    // editar.addEventListener("click", function(){
+    //     editar.classList.remove("vermelho");
+    //     if(editar.conte){}
+    // })
+
+    // editar.addEventListener("click",function(){
+    
+    // })
+
+
+
+    
+    
+
+
+
+
+
+
+
 
     let excluirTodas = document.getElementById('excluirTodas');
     let selecionarTodas = document.getElementById('selecionarTodas');

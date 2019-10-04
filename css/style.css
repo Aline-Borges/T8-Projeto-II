@@ -106,6 +106,14 @@ p{
     margin-right: 6px; 
 }
 
+.editar {
+    color: #7abb5e;
+}
+
+.vermelho{
+    color: #e0271a;
+}
+
 ::-moz-selection { /* Code for Firefox */
     background: transparent;
   }
