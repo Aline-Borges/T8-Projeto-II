@@ -1,23 +1,28 @@
 let caixaTexto = document.querySelector('#campo');
 let form = document.querySelector('#formulario');
 const primeiraDiv = document.querySelector('#div1');
-
+const mensageerro = document.getElementById('mensagemErro');
 
 form.addEventListener('submit', function(evento){
-    evento.preventDefault()
+    evento.preventDefault();
 
     if (caixaTexto.value.length == 0 || caixaTexto.value.replace (/\s/g , '').length == 0) {
-        alert("Por favor, Digite uma tarefa!");
-        return(false);
-    }
-    
+        mensageerro.classList.add('activo')
+        return;    
+    } 
+   
+    mensageerro.classList.remove('activo');
     let divmae = document.createElement("div");
     let tarefas = document.createElement("p");
     let excluir = document.createElement("span");
+    let editar = document.createElement("span");
 
     divmae.className = "divTarefas";
     tarefas.innerHTML=caixaTexto.value;
     excluir.innerHTML="x";
+    tarefas.innerHTML=caixaTexto.value;
+    editar.innerHTML="Edit";
+    editar.classList.add("editar");
     document.getElementById("campo").value = "";
     divmae.setAttribute('draggable', true);
     tarefas.setAttribute('draggable', true);
@@ -27,6 +32,7 @@ form.addEventListener('submit', function(evento){
     
     divmae.appendChild(tarefas);
     divmae.appendChild(excluir);
+    divmae.appendChild(editar);
     primeiraDiv.appendChild(divmae);
 
     tarefas.addEventListener("dblclick", function(){
@@ -43,8 +49,24 @@ form.addEventListener('submit', function(evento){
         divmae.parentNode.removeChild(divmae);   
     })
 
+    editar.addEventListener("click",function(){
+        if (!editar.classList.contains("vermelho")){ 
+            // Permitir edicion
+            editar.classList.add("vermelho");
+            tarefas.setAttribute("contentEditable", true);
+            editar.textContent = "Ok";
+        } else {
+            // Dejar como estava
+            editar.classList.remove("vermelho");
+            editar.textContent = "Editar";
+            tarefas.setAttribute("contentEditable", false);
+
+        }
+    })
+
     let excluirTodas = document.getElementById('excluirTodas');
     let selecionarTodas = document.getElementById('selecionarTodas');
+    let removerCompletos = document.getElementById("removerCompletos");
 
     excluirTodas.addEventListener("click", function(){
         evento.preventDefault()
@@ -52,6 +74,7 @@ form.addEventListener('submit', function(evento){
     })
 
     selecionarTodas.addEventListener("dblclick", function(){
+        
         tarefas.style.textDecoration = "line-through";
         tarefas.style.color = "grey";
     }) 
@@ -60,6 +83,12 @@ form.addEventListener('submit', function(evento){
         tarefas.style.textDecoration = "none";
         tarefas.style.color = "black";
     }) 
+
+    removerCompletos.addEventListener("click", function(){
+        if(tarefas.style.textDecoration === "line-through"){
+            primeiraDiv.removeChild(tarefas.parentNode);
+        }
+    })
 
     //divmae
     // divmae.addEventListener("dragstart", function (ev) { 
